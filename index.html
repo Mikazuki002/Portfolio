@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alord Jhinroy M. Somera — CS Student, Game Developer, Aspiring Software Engineer & AI/ML Engineer at Cavite State University." />
+  <title>Alord Somera · Portfolio</title>
+
+  <!-- Fonts: Space Mono (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── DESIGN TOKENS ─────────────────────────────────────────── */
+    :root {
+      --bg:           #0D1117;   /* GitHub-dark base              */
+      --bg-surface:   #161B22;   /* card / nav surface            */
+      --bg-hover:     #1C2330;   /* hover states                  */
+      --border:       #21262D;   /* subtle borders                */
+      --border-light: #30363D;   /* visible borders               */
+
+      --accent:       #478CBF;   /* Godot blue — primary accent   */
+      --accent-dim:   #2D5F87;   /* darker accent for gradients   */
+      --spark:        #F5A623;   /* amber — CTA / highlight spark */
+      --spark-dim:    #C4841A;
+
+      --text-primary:   #E6EDF3;
+      --text-secondary: #8B949E;
+      --text-muted:     #484F58;
+
+      --font-display: 'Space Mono', monospace;
+      --font-body:    'DM Sans', sans-serif;
+
+      --radius-sm:  6px;
+      --radius-md:  10px;
+      --radius-lg:  16px;
+
+      --transition: 0.2s ease;
+      --nav-h: 64px;
+    }
+
+    /* ─── RESET ────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ─── UTILITY ───────────────────────────────────────────────── */
+    .container {
+      width: min(1100px, 100% - 2.5rem);
+      margin-inline: auto;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    section { padding: 6rem 0; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── NAV ───────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+      font-family: var(--font-display);
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      padding: 0.45rem 1.1rem;
+      background: transparent;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-sm);
+      color: var(--accent) !important;
+      font-size: 0.8rem !important;
+      transition: background var(--transition), color var(--transition) !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent) !important;
+      color: #fff !important;
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-secondary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle grid background — engineer aesthetic */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* Radial glow behind the terminal */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, rgba(71,140,191,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .hero-name .accent { color: var(--accent); }
+
+    .hero-role {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.75rem;
+      font-weight: 300;
+    }
+
+    .hero-role strong {
+      color: var(--spark);
+      font-weight: 500;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .tag {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .tag.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(71,140,191,0.08);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.7rem 1.5rem;
+      background: var(--spark);
+      color: #0D1117;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      letter-spacing: 0.04em;
+    }
+
+    .btn-primary:hover {
+      background: var(--spark-dim);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.7rem 1.5rem;
+      background: transparent;
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+      letter-spacing: 0.04em;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-secondary);
+      background: var(--bg-hover);
+    }
+
+    /* ── TERMINAL BLOCK (signature element) ── */
+    .terminal {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0.9rem 1.2rem;
+      background: var(--bg-hover);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .terminal-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .t-red   { background: #FF5F57; }
+    .t-amber { background: #FFBD2E; }
+    .t-green { background: #27C840; }
+
+    .terminal-title {
+      margin-left: 8px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .terminal-body {
+      padding: 1.4rem 1.5rem;
+      line-height: 2;
+    }
+
+    .t-prompt { color: var(--accent); }
+    .t-cmd    { color: var(--text-primary); }
+    .t-key    { color: var(--spark); }
+    .t-val    { color: #7EE787; }   /* GitHub green for values */
+    .t-muted  { color: var(--text-muted); }
+    .t-comment{ color: #484F58; }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background: var(--accent);
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ─── ABOUT ─────────────────────────────────────────────────── */
+    .about { background: var(--bg-surface); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    /*
+    ╔══════════════════════════════════════════════════════════════╗
+    ║  IMAGE PLACEHOLDER — PROFILE PHOTO                           ║
+    ║                                                              ║
+    ║  Replace the <div class="about-photo"> below with:          ║
+    ║                                                              ║
+    ║  <img                                                        ║
+    ║    src="assets/images/profile.jpg"                           ║
+    ║    alt="Alord Jhinroy M. Somera"                             ║
+    ║    class="about-photo"                                       ║
+    ║  />                                                          ║
+    ║                                                              ║
+    ║  Recommended specs:                                          ║
+    ║    • Size: 600×600 px minimum                                ║
+    ║    • Format: JPG or WebP                                     ║
+    ║    • Style: Professional or semi-casual, solid/neutral bg    ║
+    ║    • File location: assets/images/profile.jpg                ║
+    ╚══════════════════════════════════════════════════════════════╝
+    */
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--bg-hover);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      gap: 10px;
+      text-align: center;
+      padding: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .about-photo svg {
+      opacity: 0.3;
+    }
+
+    /* Accent corner frame on photo */
+    .about-photo-wrap::before {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      right: -12px;
+      width: 60%;
+      height: 60%;
+      border-right: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      border-radius: 0 0 var(--radius-lg) 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .about-photo-wrap > * { position: relative; z-index: 1; }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1.2rem;
+      font-size: 0.975rem;
+    }
+
+    .about-text p strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── SKILLS ────────────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .skill-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: rgba(71,140,191,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .skill-card-title {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      font-family: var(--font-display);
+    }
+
+    .pill.known  { border-color: var(--accent); color: var(--accent); background: rgba(71,140,191,0.07); }
+    .pill.learn  { border-color: var(--spark);  color: var(--spark);  background: rgba(245,166,35,0.07); }
+
+    /* ─── PROJECTS ──────────────────────────────────────────────── */
+    .projects { background: var(--bg-surface); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .project-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-4px);
+    }
+
+    .project-card.featured { border-color: var(--accent); }
+
+    /*
+    ╔══════════════════════════════════════════════════════════════╗
+    ║  IMAGE PLACEHOLDER — PROJECT SCREENSHOTS                     ║
+    ║                                                              ║
+    ║  For each project card, replace the <div class="proj-img">  ║
+    ║  placeholder with:                                           ║
+    ║                                                              ║
+    ║  <img                                                        ║
+    ║    src="assets/images/rank-zero-preview.png"                 ║
+    ║    alt="Rank Zero game screenshot"                           ║
+    ║    class="proj-img"                                          ║
+    ║  />                                                          ║
+    ║                                                              ║
+    ║  Recommended specs per project:                              ║
+    ║    • rank-zero-preview.png   → Rank Zero gameplay screenshot ║
+    ║    • somera-preview.png      → Dodge the Creeps screenshot   ║
+    ║    • portfolio-preview.png   → Portfolio site screenshot     ║
+    ║    • Size: 600×340 px (16:9 ratio)                           ║
+    ║    • Format: PNG or WebP                                     ║
+    ║    • Export from Godot: Project > Export > Screenshot        ║
+    ║    • Or use F12 DevTools screenshot for portfolio site       ║
+    ╚══════════════════════════════════════════════════════════════╝
+    */
+    .proj-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--bg-hover);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .proj-img svg { opacity: 0.2; }
+
+    .proj-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+
+    .proj-badge {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .badge-game    { background: rgba(71,140,191,0.15); color: var(--accent); }
+    .badge-web     { background: rgba(245,166,35,0.12); color: var(--spark); }
+    .badge-coming  { background: rgba(139,148,158,0.12); color: var(--text-muted); }
+
+    .proj-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .proj-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .proj-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .proj-lang {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+    }
+
+    .lang-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .proj-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      color: var(--accent);
+      transition: color var(--transition);
+      letter-spacing: 0.04em;
+    }
+
+    .proj-link:hover { color: var(--text-primary); }
+
+    /* ─── ROADMAP ───────────────────────────────────────────────── */
+    .roadmap-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .roadmap-item {
+      display: grid;
+      grid-template-columns: 80px 1px 1fr;
+      gap: 0 1.5rem;
+      position: relative;
+    }
+
+    .rm-time {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-align: right;
+      padding-top: 0.15rem;
+      letter-spacing: 0.06em;
+    }
+
+    .rm-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .rm-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 2px solid var(--border-light);
+      background: var(--bg);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .rm-dot.done  { border-color: var(--accent); background: var(--accent); }
+    .rm-dot.now   { border-color: var(--spark);  background: var(--spark); }
+
+    .rm-connector {
+      flex: 1;
+      width: 1px;
+      background: var(--border);
+      min-height: 40px;
+    }
+
+    .roadmap-item:last-child .rm-connector { display: none; }
+
+    .rm-content { padding-bottom: 2rem; }
+
+    .rm-title {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .rm-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    /* ─── CONTACT ───────────────────────────────────────────────── */
+    .contact { text-align: center; }
+
+    .contact-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--spark));
+    }
+
+    .contact-card .section-title { margin-bottom: 0.75rem; }
+
+    .contact-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.8rem 1.2rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      transition: border-color var(--transition), color var(--transition);
+      text-align: left;
+    }
+
+    .contact-row:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .contact-row svg { flex-shrink: 0; }
+
+    .contact-row span { flex: 1; }
+
+    .contact-actions { display: flex; gap: 12px; justify-content: center; }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 0;
+      text-align: center;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-logo strong { color: var(--accent); }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .footer-links a {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--text-primary); }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      section { padding: 4rem 0; }
+
+      .hero-grid    { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-grid   { grid-template-columns: 1fr; gap: 2rem; }
+
+      .about-photo-wrap { max-width: 260px; margin: 0 auto; }
+      .about-photo-wrap::before { display: none; }
+
+      .nav-links { display: none; }
+
+      .nav-hamburger { display: flex; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--bg-surface);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem;
+        gap: 1rem;
+      }
+
+      .about-stats { grid-template-columns: repeat(3, 1fr); }
+
+      .contact-card { padding: 2rem 1.5rem; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, .reveal { animation: none !important; transition: none !important; }
+    }
+
+
+    .about-photo-wrapper {
+    width: 100%;
+    height: auto;
+    max-width: 100%;   /* adjustable */
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 16px;
+    }
+
+    .about-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAVIGATION ─────────────────────────────────────────────── -->
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span>&lt;</span>mikazuki002<span>/&gt;</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ── HERO ───────────────────────────────────────────────────── -->
+  <section class="hero" id="hero" aria-label="Introduction">
+    <div class="container hero-grid">
+
+      <!-- Left: identity block -->
+      <div>
+        <p class="hero-eyebrow">Available for Internship · 2025</p>
+
+        <h1 class="hero-name">
+          Alord<br>
+          <span class="accent">Jhinroy</span><br>
+          Somera
+        </h1>
+
+        <p class="hero-role">
+          BS Computer Science · Cavite State University<br>
+          <strong>Game Developer · Software Engineer · AI/ML Aspirant</strong>
+        </p>
+
+        <div class="hero-tags" role="list" aria-label="Focus areas">
+          <span class="tag active" role="listitem">Game Dev</span>
+          <span class="tag active" role="listitem">Godot Engine</span>
+          <span class="tag" role="listitem">Software Engineering</span>
+          <span class="tag" role="listitem">AI / ML</span>
+          <span class="tag" role="listitem">Data Analysis</span>
+          <span class="tag" role="listitem">Web Dev</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary" aria-label="View my projects">
+            <!-- Arrow right icon -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            View Projects
+          </a>
+          <a href="https://github.com/Mikazuki002" class="btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile in new tab">
+            <!-- GitHub icon -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: terminal signature element -->
+      <div class="terminal" role="img" aria-label="Terminal showing developer profile information">
+        <div class="terminal-bar">
+          <span class="terminal-dot t-red"   aria-hidden="true"></span>
+          <span class="terminal-dot t-amber" aria-hidden="true"></span>
+          <span class="terminal-dot t-green" aria-hidden="true"></span>
+          <span class="terminal-title">~/portfolio — bash</span>
+        </div>
+        <div class="terminal-body" id="terminal-body" aria-live="polite">
+          <!-- Populated by JS typewriter below -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── ABOUT ──────────────────────────────────────────────────── -->
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Photo column -->
+        <div class="about-photo-wrap reveal">
+          <!--
+          ╔════════════════════════════════════════════════════════╗
+          ║  REPLACE THIS WITH YOUR PROFILE PHOTO                 ║
+          ║                                                        ║
+          ║  Step 1: Add your photo file to assets/images/        ║
+          ║  Step 2: Replace the <div class="about-photo"> block  ║
+          ║          with the <img> tag below:                     ║
+          ║                                                        ║
+          ║  <img                                                  ║
+          ║    src="assets/images/profile.jpg"                     ║
+          ║    alt="Alord Jhinroy M. Somera — CS Student"          ║
+          ║    class="about-photo"                                 ║
+          ║    style="object-fit:cover; border-radius:16px;"       ║
+          ║  />                                                    ║
+          ║                                                        ║
+          ║  Photo tips:                                           ║
+          ║    • Square crop (1:1 ratio)                           ║
+          ║    • Minimum 600×600px                                 ║
+          ║    • Solid or blurred background                       ║
+          ║    • Good lighting on your face                        ║
+          ╚════════════════════════════════════════════════════════╝
+          -->
+          <img                                                  
+              src="./images/Profile.jpeg"                     
+              alt="Alord Jhinroy M. Somera — CS Student"          
+              class="about-photo"
+            />    
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Text column -->
+        <div class="about-text reveal">
+          <p class="section-eyebrow">About Me</p>
+          <h2 class="section-title" id="about-title">Building at the edge of games, code, and data.</h2>
+
+          <p>
+            I'm <strong>Alord Jhinroy M. Somera</strong>, a 3rd-year BS Computer Science student at
+            <strong>Cavite State University</strong>. My technical interests span game development,
+            software engineering, and data-driven systems — three domains I'm actively building toward.
+          </p>
+          <p>
+            My first serious project, <strong>Rank Zero</strong>, was built entirely in Godot Engine
+            using GDScript — from game logic and physics to scene management and UI systems. It taught
+            me that shipping something, even imperfect, is the fastest way to grow as an engineer.
+          </p>
+          <p>
+            I'm currently expanding into <strong>Python-based data analysis</strong> and machine
+            learning fundamentals, with an internship on the horizon in mid-2025. I believe the best
+            software engineers are T-shaped: deep in one area, broad enough to contribute across
+            the stack.
+          </p>
+
+          <div class="about-stats" role="list" aria-label="Quick stats">
+            <div class="stat-item" role="listitem">
+              <span class="stat-num" aria-label="3 repositories">3</span>
+              <span class="stat-label">Repos</span>
+            </div>
+            <div class="stat-item" role="listitem">
+              <span class="stat-num" aria-label="5 languages">5+</span>
+              <span class="stat-label">Languages</span>
+            </div>
+            <div class="stat-item" role="listitem">
+              <span class="stat-num" aria-label="Class of 2026">2026</span>
+              <span class="stat-label">Grad Year</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── SKILLS ─────────────────────────────────────────────────── -->
+  <section id="skills" aria-labelledby="skills-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">Technical Competencies</p>
+        <h2 class="section-title" id="skills-title">What I work with</h2>
+        <p class="section-sub">Languages, engines, and tools I currently use — plus what I'm learning next.</p>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-card reveal">
+          <div class="skill-card-icon" aria-hidden="true">🎮</div>
+          <p class="skill-card-title">Game Development</p>
+          <div class="skill-pills" role="list">
+            <span class="pill known" role="listitem">Godot Engine</span>
+            <span class="pill known" role="listitem">GDScript</span>
+            <span class="pill known" role="listitem">C#</span>
+            <span class="pill learn" role="listitem">Unity ↗</span>
+            <span class="pill" role="listitem">Blender basics</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card-icon" aria-hidden="true">💻</div>
+          <p class="skill-card-title">Programming Languages</p>
+          <div class="skill-pills" role="list">
+            <span class="pill known" role="listitem">Python</span>
+            <span class="pill known" role="listitem">Java</span>
+            <span class="pill known" role="listitem">C++</span>
+            <span class="pill known" role="listitem">C#</span>
+            <span class="pill known" role="listitem">JavaScript</span>
+            <span class="pill learn" role="listitem">TypeScript ↗</span>
+            <span class="pill learn" role="listitem">SQL ↗</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card-icon" aria-hidden="true">📊</div>
+          <p class="skill-card-title">Data Science & AI/ML</p>
+          <div class="skill-pills" role="list">
+            <span class="pill learn" role="listitem">NumPy ↗</span>
+            <span class="pill learn" role="listitem">Pandas ↗</span>
+            <span class="pill learn" role="listitem">Matplotlib ↗</span>
+            <span class="pill learn" role="listitem">scikit-learn ↗</span>
+            <span class="pill learn" role="listitem">Jupyter ↗</span>
+            <span class="pill" role="listitem">TensorFlow</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card-icon" aria-hidden="true">🌐</div>
+          <p class="skill-card-title">Web Development</p>
+          <div class="skill-pills" role="list">
+            <span class="pill known" role="listitem">HTML5</span>
+            <span class="pill known" role="listitem">CSS3</span>
+            <span class="pill known" role="listitem">JavaScript</span>
+            <span class="pill learn" role="listitem">React ↗</span>
+            <span class="pill learn" role="listitem">Node.js ↗</span>
+            <span class="pill learn" role="listitem">Flask ↗</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card-icon" aria-hidden="true">🛠</div>
+          <p class="skill-card-title">Tools & Practices</p>
+          <div class="skill-pills" role="list">
+            <span class="pill known" role="listitem">Git</span>
+            <span class="pill known" role="listitem">GitHub</span>
+            <span class="pill known" role="listitem">VS Code</span>
+            <span class="pill learn" role="listitem">GitHub Actions ↗</span>
+            <span class="pill learn" role="listitem">Docker ↗</span>
+            <span class="pill" role="listitem">Linux CLI</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card-icon" aria-hidden="true">🎓</div>
+          <p class="skill-card-title">CS Foundations</p>
+          <div class="skill-pills" role="list">
+            <span class="pill known" role="listitem">Data Structures</span>
+            <span class="pill known" role="listitem">Algorithms</span>
+            <span class="pill known" role="listitem">OOP</span>
+            <span class="pill known" role="listitem">Discrete Math</span>
+            <span class="pill known" role="listitem">Database Systems</span>
+            <span class="pill known" role="listitem">OS</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Legend -->
+      <div class="reveal" style="margin-top:1.5rem; display:flex; gap:1.5rem; flex-wrap:wrap;">
+        <span style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-display); display:flex; align-items:center; gap:6px;">
+          <span class="pill known" style="font-size:0.65rem; padding:2px 8px;">known</span> Currently use
+        </span>
+        <span style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-display); display:flex; align-items:center; gap:6px;">
+          <span class="pill learn" style="font-size:0.65rem; padding:2px 8px;">learn ↗</span> Actively learning
+        </span>
+        <span style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-display); display:flex; align-items:center; gap:6px;">
+          <span class="pill" style="font-size:0.65rem; padding:2px 8px;">target</span> On the roadmap
+        </span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── PROJECTS ───────────────────────────────────────────────── -->
+  <section class="projects" id="projects" aria-labelledby="projects-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">Work</p>
+        <h2 class="section-title" id="projects-title">Projects</h2>
+        <p class="section-sub">Built with real tools, shipped to GitHub. More coming as internship approaches.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: Rank Zero -->
+        <article class="project-card featured reveal" aria-label="Rank Zero project">
+          <!--
+          ╔════════════════════════════════════════════════════════╗
+          ║  SCREENSHOT — RANK ZERO                                ║
+          ║                                                        ║
+          ║  Replace the <div class="proj-img"> below with:       ║
+          ║                                                        ║
+          ║  <img                                                  ║
+          ║    src="assets/images/rank-zero-preview.png"           ║
+          ║    alt="Rank Zero — gameplay screenshot showing the    ║
+          ║         main game scene in Godot Engine"               ║
+          ║    class="proj-img"                                    ║
+          ║    style="object-fit:cover;"                           ║
+          ║  />                                                    ║
+          ║                                                        ║
+          ║  How to export from Godot:                             ║
+          ║    Editor → Take Screenshot (or press F12 in-game)     ║
+          ╚════════════════════════════════════════════════════════╝
+          -->
+          <img                                                  
+              src="../Portfolio/images/Rank_Zero.png"           
+              alt="Rank Zero — gameplay screenshot showing the    
+                   main game scene in Godot Engine"              
+              class="project-img"                     
+            />      
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+              <path d="M7 8h2M7 11h2M15 8l-3 3 3 3"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge badge-game">Game Dev</span>
+            <h3 class="proj-title">Rank Zero</h3>
+            <p class="proj-desc">
+              A school game development project built entirely in Godot Engine. Implements
+              scene management, physics-based player movement, enemy logic, UI systems,
+              and a complete game loop. Primary school capstone for game dev course.
+            </p>
+            <div class="proj-footer">
+              <span class="proj-lang">
+                <span class="lang-dot" style="background:#478CBF;" aria-hidden="true"></span>
+                GDScript · Godot Engine
+              </span>
+              <a href="https://github.com/Mikazuki002/Rank_Zero" class="proj-link" target="_blank" rel="noopener noreferrer" aria-label="View Rank Zero on GitHub">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Somera -->
+        <article class="project-card reveal" aria-label="Somera project">
+          <!--
+          ╔════════════════════════════════════════════════════════╗
+          ║  SCREENSHOT — SOMERA (DODGE THE CREEPS)                ║
+          ║                                                        ║
+          ║  Replace the <div class="proj-img"> below with:       ║
+          ║                                                        ║
+          ║  <img                                                  ║
+          ║    src="assets/images/somera-preview.png"              ║
+          ║    alt="Somera — Dodge the Creeps gameplay screenshot" ║
+          ║    class="proj-img"                                    ║
+          ║    style="object-fit:cover;"                           ║
+          ║  />                                                    ║
+          ║                                                        ║
+          ║  This is based on the official Godot tutorial.        ║
+          ║  Screenshot the game window during play mode.         ║
+          ╚════════════════════════════════════════════════════════╝
+          -->
+          <img                                                  ║
+             src="./images/Dodge_The_Creeps.png"              
+             alt="Somera — Dodge the Creeps gameplay screenshot" 
+            class="proj-img"                                       
+            />  
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"/><path d="M5 12H3M21 12h-2M12 5V3M12 21v-2"/>
+              <path d="M7.05 7.05L5.64 5.64M18.36 18.36l-1.41-1.41"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge badge-game">Game Dev</span>
+            <h3 class="proj-title">Somera — Dodge the Creeps</h3>
+            <p class="proj-desc">
+              A Godot Engine game built on the classic "Dodge the Creeps" mechanic.
+              Demonstrates player input handling, randomized enemy spawning, score
+              tracking, and game state transitions. Foundation project in game development.
+            </p>
+            <div class="proj-footer">
+              <span class="proj-lang">
+                <span class="lang-dot" style="background:#478CBF;" aria-hidden="true"></span>
+                GDScript · Godot Engine
+              </span>
+              <a href="https://github.com/Mikazuki002/Somera" class="proj-link" target="_blank" rel="noopener noreferrer" aria-label="View Somera on GitHub">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Portfolio -->
+        <article class="project-card reveal" aria-label="Portfolio website project">
+          <!--
+          ╔════════════════════════════════════════════════════════╗
+          ║  SCREENSHOT — PORTFOLIO SITE                           ║
+          ║                                                        ║
+          ║  Replace the <div class="proj-img"> below with:       ║
+          ║                                                        ║
+          ║  <img                                                  ║
+          ║    src="assets/images/portfolio-preview.png"           ║
+          ║    alt="Portfolio website — landing page screenshot"   ║
+          ║    class="proj-img"                                    ║
+          ║    style="object-fit:cover; object-position:top;"      ║
+          ║  />                                                    ║
+          ║                                                        ║
+          ║  How to capture: Open Chrome DevTools → Cmd/Ctrl+P    ║
+          ║  → "Capture full size screenshot"                      ║
+          ╚════════════════════════════════════════════════════════╝
+          -->
+          <img                                                  
+              src="./images/Portfolio.png"           
+              alt="Portfolio website — landing page screenshot"   
+              class="proj-img"                                     
+            />  
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><circle cx="8" cy="7" r="1"/><circle cx="12" cy="7" r="1"/><circle cx="16" cy="7" r="1"/>
+              <path d="M5 11h14M5 14h8"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge badge-web">Web Dev</span>
+            <h3 class="proj-title">Portfolio Website</h3>
+            <p class="proj-desc">
+              Personal portfolio site built to showcase projects, skills, and background.
+              Uses HTML, CSS, and JavaScript. Hosted via GitHub Pages for zero-cost
+              deployment and continuous availability.
+            </p>
+            <div class="proj-footer">
+              <span class="proj-lang">
+                <span class="lang-dot" style="background:#F7DF1E;" aria-hidden="true"></span>
+                HTML · CSS · JavaScript
+              </span>
+              <a href="https://github.com/Mikazuki002/Portfolio" class="proj-link" target="_blank" rel="noopener noreferrer" aria-label="View Portfolio on GitHub">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── ROADMAP ────────────────────────────────────────────────── -->
+  <section id="roadmap" aria-labelledby="roadmap-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">What's next</p>
+        <h2 class="section-title" id="roadmap-title">Build Roadmap</h2>
+        <p class="section-sub">Transparent about where I am and where I'm headed.</p>
+      </div>
+
+      <div class="roadmap-list" role="list">
+
+        <div class="roadmap-item reveal" role="listitem">
+          <span class="rm-time">Done</span>
+          <div class="rm-line" aria-hidden="true">
+            <span class="rm-dot done"></span>
+            <span class="rm-connector"></span>
+          </div>
+          <div class="rm-content">
+            <p class="rm-title">Rank Zero — Godot school game</p>
+            <p class="rm-desc">Completed school capstone. Scene management, physics, game loop. GDScript + Godot Engine.</p>
+          </div>
+        </div>
+
+        <div class="roadmap-item reveal" role="listitem">
+          <span class="rm-time">Done</span>
+          <div class="rm-line" aria-hidden="true">
+            <span class="rm-dot done"></span>
+            <span class="rm-connector"></span>
+          </div>
+          <div class="rm-content">
+            <p class="rm-title">Somera — Dodge the Creeps</p>
+            <p class="rm-desc">Classic Godot tutorial project. Enemy spawning, score system, game state management.</p>
+          </div>
+        </div>
+
+        <div class="roadmap-item reveal" role="listitem">
+          <span class="rm-time">Now</span>
+          <div class="rm-line" aria-hidden="true">
+            <span class="rm-dot now"></span>
+            <span class="rm-connector"></span>
+          </div>
+          <div class="rm-content">
+            <p class="rm-title">Portfolio website + GitHub profile</p>
+            <p class="rm-desc">This site. Built with semantic HTML5, CSS custom properties, and vanilla JS. Deployed on GitHub Pages.</p>
+          </div>
+        </div>
+
+        <div class="roadmap-item reveal" role="listitem">
+          <span class="rm-time">Next</span>
+          <div class="rm-line" aria-hidden="true">
+            <span class="rm-dot"></span>
+            <span class="rm-connector"></span>
+          </div>
+          <div class="rm-content">
+            <p class="rm-title">Philippine open data — EDA notebook</p>
+            <p class="rm-desc">Python + Pandas + Matplotlib. Exploratory data analysis on a Philippine public dataset. Published as a Jupyter notebook on GitHub.</p>
+          </div>
+        </div>
+
+        <div class="roadmap-item reveal" role="listitem">
+          <span class="rm-time">Soon</span>
+          <div class="rm-line" aria-hidden="true">
+            <span class="rm-dot"></span>
+            <span class="rm-connector"></span>
+          </div>
+          <div class="rm-content">
+            <p class="rm-title">ML Classifier project</p>
+            <p class="rm-desc">First machine learning project using scikit-learn. Classification model with evaluation metrics and visualized results.</p>
+          </div>
+        </div>
+
+        <div class="roadmap-item reveal" role="listitem">
+          <span class="rm-time">Mid-2025</span>
+          <div class="rm-line" aria-hidden="true">
+            <span class="rm-dot"></span>
+            <span class="rm-connector"></span>
+          </div>
+          <div class="rm-content">
+            <p class="rm-title">Internship — Software Engineering or Data Science</p>
+            <p class="rm-desc">Actively seeking an internship in the Philippines. Target roles: backend developer, data analyst, or game developer.</p>
+          </div>
+        </div>
+
+        <div class="roadmap-item reveal" role="listitem">
+          <span class="rm-time">2026</span>
+          <div class="rm-line" aria-hidden="true">
+            <span class="rm-dot"></span>
+          </div>
+          <div class="rm-content">
+            <p class="rm-title">Graduate — BS Computer Science</p>
+            <p class="rm-desc">Cavite State University. Entry-level role in software engineering, game development, or data science.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── CONTACT ────────────────────────────────────────────────── -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="contact-card reveal">
+        <p class="section-eyebrow" style="text-align:center;">Get in touch</p>
+        <h2 class="section-title" id="contact-title">Open for opportunities</h2>
+        <p>Internship applications, collaboration requests, or just a conversation about tech — I'm reachable via any of the channels below.</p>
+
+        <div class="contact-links" role="list">
+
+          <a href="mailto:alordsomera@gmail.com" class="contact-row" role="listitem" aria-label="Send an email">
+            <!--
+            ═══ REPLACE YOUR_EMAIL@example.com with your real email ═══
+            Example: href="mailto:alord.somera@gmail.com"
+            -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <span>alordsomera@gmail.com</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a href="https://github.com/Mikazuki002" class="contact-row" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="View GitHub profile">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <span>github.com/Mikazuki002</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+        </div>
+
+        <div class="contact-actions">
+          <a href="alordsomera@gmail.com" class="btn-primary" aria-label="Send email">
+            <!--
+            ═══ SAME — replace YOUR_EMAIL@example.com with your real email ═══
+            -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Send Email
+          </a>
+          <a href="https://github.com/Mikazuki002" class="btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────── -->
+  <footer role="contentinfo">
+    <div class="container footer-inner">
+      <span class="footer-logo">&lt;<strong>mikazuki002</strong>/&gt;</span>
+      <span class="footer-copy">© 2025 Alord Jhinroy M. Somera · Built with HTML, CSS & JS</span>
+      <nav aria-label="Footer navigation">
+        <ul class="footer-links" role="list">
+          <li><a href="#hero">Top</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="https://github.com/Mikazuki002" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ── JAVASCRIPT ────────────────────────────────────────────── -->
+  <script>
+    /* ── 1. TERMINAL TYPEWRITER (signature element) ────────────── */
+    const lines = [
+      { text: '$ whoami', cls: 't-prompt', delay: 0 },
+      { text: 'alord.somera // cs student @ cvsu', cls: 't-val', delay: 800 },
+      { text: '', delay: 1200 },
+      { text: '$ cat profile.json', cls: 't-prompt', delay: 1400 },
+      { text: '{', cls: 't-cmd', delay: 2000 },
+      { text: '  <span class="t-key">"role"</span>   : <span class="t-val">"game dev + swe + ai/ml"</span>,', cls: 't-cmd', delay: 2300 },
+      { text: '  <span class="t-key">"stack"</span>  : <span class="t-val">["python","java","c++","gdscript"]</span>,', cls: 't-cmd', delay: 2800 },
+      { text: '  <span class="t-key">"engine"</span> : <span class="t-val">"godot"</span>,', cls: 't-cmd', delay: 3200 },
+      { text: '  <span class="t-key">"status"</span> : <span class="t-val">"open to internship 2025"</span>', cls: 't-cmd', delay: 3600 },
+      { text: '}', cls: 't-cmd', delay: 4000 },
+      { text: '', delay: 4400 },
+      { text: '$ git log --oneline', cls: 't-prompt', delay: 4600 },
+      { text: '<span class="t-muted">a3f12c1</span> add Rank_Zero game project', cls: 't-cmd', delay: 5100 },
+      { text: '<span class="t-muted">7e8b2d4</span> dodge the creeps — Somera', cls: 't-cmd', delay: 5400 },
+      { text: '<span class="t-muted">f1c09a8</span> init portfolio site', cls: 't-cmd', delay: 5700 },
+      { text: '', delay: 6000 },
+      { text: '$ _', cls: 't-prompt', delay: 6200, cursor: true },
+    ];
+
+    const tb = document.getElementById('terminal-body');
+    let lineIndex = 0;
+
+    function renderNextLine() {
+      if (lineIndex >= lines.length) return;
+      const { text, cls, delay, cursor } = lines[lineIndex];
+      lineIndex++;
+
+      setTimeout(() => {
+        const p = document.createElement('p');
+        p.style.margin = '0';
+        p.style.whiteSpace = 'pre';
+        if (text === '') {
+          p.innerHTML = '&nbsp;';
+        } else if (cursor) {
+          p.innerHTML = `<span class="${cls}">${text.replace('_', '')}</span><span class="cursor" aria-hidden="true"></span>`;
+        } else {
+          p.innerHTML = `<span class="${cls}">${text}</span>`;
+        }
+        tb.appendChild(p);
+        renderNextLine();
+      }, delay);
+    }
+
+    renderNextLine();
+
+
+    /* ── 2. SCROLL REVEAL ──────────────────────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+
+    /* ── 3. MOBILE NAV ─────────────────────────────────────────── */
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    /* Close menu on link click */
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+
+    /* ── 4. ACTIVE NAV HIGHLIGHT ON SCROLL ─────────────────────── */
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + entry.target.id
+              ? 'var(--text-primary)'
+              : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => navObserver.observe(s));
+  </script>
+
+</body>
+</html>
