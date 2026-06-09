@@ -70,20 +70,6 @@ I'm a **3rd-year BS Computer Science student** at **Cavite State University**, p
 | 📅 **Year Level** | 3rd Year (Expected Graduation: 2026) |
 | 📚 **Key Subjects** | Data Structures & Algorithms, Object-Oriented Programming, Discrete Mathematics, Operating Systems, Database Systems, Software Engineering, Artificial Intelligence |
  
----
- 
-## 📊 GitHub Stats
- 
-<div align="center">
-![Alord's GitHub Stats](https://github-readme-stats.vercel.app/api?username=Mikazuki002&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)
- 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Mikazuki002&layout=compact&theme=tokyonight&hide_border=true)
- 
-</div>
-> 📌 *Stats reflect public repositories. More projects will be added as internship and personal work progresses.*
- 
----
- 
 ## 🗺️ What I'm Building Next
  
 ```text
@@ -103,22 +89,7 @@ I'm a **3rd-year BS Computer Science student** at **Cavite State University**, p
 > - **Data Analysis / Data Science** — Python-based analytics
 > - **Game Development** — Godot or Unity projects
  
----
- 
-## 📬 Let's Connect
- 
-<div align="center">
-(https://img.shields.io/badge/Email-alord.somera%40cvsu.edu.ph-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:alord.somera@cvsu.edu.ph)
-(https://img.shields.io/badge/GitHub-Mikazuki002-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Mikazuki002)
- 
-*Open to internship opportunities, collaborative projects, and entry-level roles in the Philippines and remote.*
- 
-</div>
----
  
 <div align="center">
 "Building one commit at a time — from game worlds to data pipelines."
- 
-![Profile Views](https://komarev.com/ghpvc/?username=Mikazuki002&color=478cbf&style=flat-square&label=Profile+Views)
- 
 </div>
