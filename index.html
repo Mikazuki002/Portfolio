@@ -414,26 +414,6 @@
     .about-photo-wrap {
       position: relative;
     }
-
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  IMAGE PLACEHOLDER — PROFILE PHOTO                           ║
-    ║                                                              ║
-    ║  Replace the <div class="about-photo"> below with:          ║
-    ║                                                              ║
-    ║  <img                                                        ║
-    ║    src="assets/images/profile.jpg"                           ║
-    ║    alt="Alord Jhinroy M. Somera"                             ║
-    ║    class="about-photo"                                       ║
-    ║  />                                                          ║
-    ║                                                              ║
-    ║  Recommended specs:                                          ║
-    ║    • Size: 600×600 px minimum                                ║
-    ║    • Format: JPG or WebP                                     ║
-    ║    • Style: Professional or semi-casual, solid/neutral bg    ║
-    ║    • File location: assets/images/profile.jpg                ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
     .about-photo {
       width: 100%;
       aspect-ratio: 1;
@@ -596,29 +576,6 @@
 
     .project-card.featured { border-color: var(--accent); }
 
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  IMAGE PLACEHOLDER — PROJECT SCREENSHOTS                     ║
-    ║                                                              ║
-    ║  For each project card, replace the <div class="proj-img">  ║
-    ║  placeholder with:                                           ║
-    ║                                                              ║
-    ║  <img                                                        ║
-    ║    src="assets/images/rank-zero-preview.png"                 ║
-    ║    alt="Rank Zero game screenshot"                           ║
-    ║    class="proj-img"                                          ║
-    ║  />                                                          ║
-    ║                                                              ║
-    ║  Recommended specs per project:                              ║
-    ║    • rank-zero-preview.png   → Rank Zero gameplay screenshot ║
-    ║    • somera-preview.png      → Dodge the Creeps screenshot   ║
-    ║    • portfolio-preview.png   → Portfolio site screenshot     ║
-    ║    • Size: 600×340 px (16:9 ratio)                           ║
-    ║    • Format: PNG or WebP                                     ║
-    ║    • Export from Godot: Project > Export > Screenshot        ║
-    ║    • Or use F12 DevTools screenshot for portfolio site       ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
     .proj-img {
       width: 100%;
       aspect-ratio: 16/9;
@@ -1031,28 +988,6 @@
 
         <!-- Photo column -->
         <div class="about-photo-wrap reveal">
-          <!--
-          ╔════════════════════════════════════════════════════════╗
-          ║  REPLACE THIS WITH YOUR PROFILE PHOTO                 ║
-          ║                                                        ║
-          ║  Step 1: Add your photo file to assets/images/        ║
-          ║  Step 2: Replace the <div class="about-photo"> block  ║
-          ║          with the <img> tag below:                     ║
-          ║                                                        ║
-          ║  <img                                                  ║
-          ║    src="assets/images/profile.jpg"                     ║
-          ║    alt="Alord Jhinroy M. Somera — CS Student"          ║
-          ║    class="about-photo"                                 ║
-          ║    style="object-fit:cover; border-radius:16px;"       ║
-          ║  />                                                    ║
-          ║                                                        ║
-          ║  Photo tips:                                           ║
-          ║    • Square crop (1:1 ratio)                           ║
-          ║    • Minimum 600×600px                                 ║
-          ║    • Solid or blurred background                       ║
-          ║    • Good lighting on your face                        ║
-          ╚════════════════════════════════════════════════════════╝
-          -->
           <img                                                  
               src="./images/Profile.jpeg"                     
               alt="Alord Jhinroy M. Somera — CS Student"          
@@ -1227,24 +1162,6 @@
 
         <!-- Project 1: Rank Zero -->
         <article class="project-card featured reveal" aria-label="Rank Zero project">
-          <!--
-          ╔════════════════════════════════════════════════════════╗
-          ║  SCREENSHOT — RANK ZERO                                ║
-          ║                                                        ║
-          ║  Replace the <div class="proj-img"> below with:       ║
-          ║                                                        ║
-          ║  <img                                                  ║
-          ║    src="assets/images/rank-zero-preview.png"           ║
-          ║    alt="Rank Zero — gameplay screenshot showing the    ║
-          ║         main game scene in Godot Engine"               ║
-          ║    class="proj-img"                                    ║
-          ║    style="object-fit:cover;"                           ║
-          ║  />                                                    ║
-          ║                                                        ║
-          ║  How to export from Godot:                             ║
-          ║    Editor → Take Screenshot (or press F12 in-game)     ║
-          ╚════════════════════════════════════════════════════════╝
-          -->
           <img                                                  
               src="../Portfolio/images/Rank_Zero.png"           
               alt="Rank Zero — gameplay screenshot showing the    
@@ -1279,23 +1196,7 @@
 
         <!-- Project 2: Somera -->
         <article class="project-card reveal" aria-label="Somera project">
-          <!--
-          ╔════════════════════════════════════════════════════════╗
-          ║  SCREENSHOT — SOMERA (DODGE THE CREEPS)                ║
-          ║                                                        ║
-          ║  Replace the <div class="proj-img"> below with:       ║
-          ║                                                        ║
-          ║  <img                                                  ║
-          ║    src="assets/images/somera-preview.png"              ║
-          ║    alt="Somera — Dodge the Creeps gameplay screenshot" ║
-          ║    class="proj-img"                                    ║
-          ║    style="object-fit:cover;"                           ║
-          ║  />                                                    ║
-          ║                                                        ║
-          ║  This is based on the official Godot tutorial.        ║
-          ║  Screenshot the game window during play mode.         ║
-          ╚════════════════════════════════════════════════════════╝
-          -->
+
           <img                                                  ║
              src="./images/Dodge_The_Creeps.png"              
              alt="Somera — Dodge the Creeps gameplay screenshot" 
@@ -1329,23 +1230,7 @@
 
         <!-- Project 3: Portfolio -->
         <article class="project-card reveal" aria-label="Portfolio website project">
-          <!--
-          ╔════════════════════════════════════════════════════════╗
-          ║  SCREENSHOT — PORTFOLIO SITE                           ║
-          ║                                                        ║
-          ║  Replace the <div class="proj-img"> below with:       ║
-          ║                                                        ║
-          ║  <img                                                  ║
-          ║    src="assets/images/portfolio-preview.png"           ║
-          ║    alt="Portfolio website — landing page screenshot"   ║
-          ║    class="proj-img"                                    ║
-          ║    style="object-fit:cover; object-position:top;"      ║
-          ║  />                                                    ║
-          ║                                                        ║
-          ║  How to capture: Open Chrome DevTools → Cmd/Ctrl+P    ║
-          ║  → "Capture full size screenshot"                      ║
-          ╚════════════════════════════════════════════════════════╝
-          -->
+
           <img                                                  
               src="./images/Portfolio.png"           
               alt="Portfolio website — landing page screenshot"   
